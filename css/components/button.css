@@ -22,7 +22,9 @@
     align-items:center;
     gap:.6rem;
 
-    padding:16px 28px;
+    padding:12px 22px;
+
+    font-size:0.95rem;
 
     border-radius:14px;
 

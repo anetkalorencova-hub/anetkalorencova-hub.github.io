@@ -1,0 +1,21 @@
+/*========================================================
+  BODY
+========================================================*/
+
+body{
+
+    background:var(--bg-color);
+
+    color:var(--text-color);
+
+    font-family:"Manrope",sans-serif;
+
+    line-height:1.6;
+
+    min-height:100vh;
+
+    -webkit-font-smoothing:antialiased;
+
+    text-rendering:optimizeLegibility;
+
+}

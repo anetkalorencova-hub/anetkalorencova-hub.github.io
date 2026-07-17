@@ -1,17 +1,11 @@
 /*========================================================
-  HERO SEKCE  –  kompletní styl horní části webu
+  HERO – vyčištěná verze
 --------------------------------------------------------
-  OBSAH SOUBORU (podle pořadí níže):
-    1)  .hero               – celá sekce
-    2)  POZADÍ              – barevné záře v rozích sekce
-    3)  .hero-container     – rozložení do 3 sloupců
-    4)  .hero-content       – levá část (texty)
-    5)  .hero-visual        – prostřední panel (video)
-    6)  HERO VIDEO          – dvě videa + maska + přepínání
-    7)  NADPIS / ODSTAVEC / MALÝ NÁPIS  – texty vlevo
-    8)  .hero-services      – pravý sloupec (plovoucí ikony)
-    9)  IKONA + JISKŘENÍ    – styl ikon a efekt při najetí
-    10) FLOATING "Text"     – malá plovoucí kartička
+  ROZLOŽENÍ (desktop):
+    - levý sloupec  = texty + tlačítka
+    - pravý sloupec = ikony služeb
+    - paní (video)  = position:absolute, vznáší se v POZADÍ
+                      za oběma sloupci (nezabírá místo v gridu)
 ========================================================*/
 
 
@@ -22,17 +16,13 @@
 .hero {
     position: relative;
     overflow: hidden;
-    min-height: calc(100vh - var(--header-height));
+    min-height: 700px;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     padding: 5rem 0;
 
-    /* JEMNÝ ČERNÝ STŘED za videem:
-       Video má černé okraje, které se screen blendem
-       zprůhlední. Aby splynuly dokonale, je oblast za videem
-       taky černá – přechod je ale hodně měkký a velký, takže
-       nevzniká žádný viditelný obdélník ani ovál, jen se
-       pozadí za videem prohloubí do černa. */
+    /* jemný černý střed za videem – měkký přechod do barvy pozadí,
+       aby černé okraje videa (screen blend) splynuly */
     background:
         radial-gradient(
             circle at 62% 48%,
@@ -46,124 +36,117 @@
 /*========================================================
   2) POZADÍ HERO – dvě barevné záře v rozích
 --------------------------------------------------------
-  Tohle jsou jemné barevné "obláčky" v pozadí sekce
+  Jemné barevné "obláčky" v rozích sekce
   (fialový vpravo nahoře, modrý vlevo dole).
-  POZOR: tohle NENÍ záře za postavou – ta je vypnutá.
 ========================================================*/
 
-.hero::before{
-    content:"";
-    position:absolute;
-    width:700px;
-    height:700px;
-    top:-180px;
-    right:-150px;
-    border-radius:50%;
-    background:radial-gradient(
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    top: -180px;
+    right: -150px;
+    border-radius: 50%;
+    background: radial-gradient(
         circle,
-        rgba(124,58,237,.30),
+        rgba(124, 58, 237, .30),
         transparent 70%
     );
-    filter:blur(70px);
-    z-index:0;
+    filter: blur(70px);
+    z-index: 0;
 }
 
-.hero::after{
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    left:-120px;
-    bottom:-150px;
-    border-radius:50%;
-    background:radial-gradient(
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: -120px;
+    bottom: -150px;
+    border-radius: 50%;
+    background: radial-gradient(
         circle,
-        rgba(0,212,255,.18),
+        rgba(0, 212, 255, .18),
         transparent 70%
     );
-    filter:blur(70px);
-    z-index:0;
+    filter: blur(70px);
+    z-index: 0;
 }
 
 
 /*========================================================
-  3) ROZLOŽENÍ HERO (3 sloupce vedle sebe)
+  3) ROZLOŽENÍ HERO – DVA sloupce vedle sebe
 --------------------------------------------------------
-  Levý sloupec = texty
-  Prostřední   = video
-  Pravý        = ikony služeb
+  Levý  = texty
+  Pravý = ikony služeb
+  Mezi nimi je mezera, do které se paní z pozadí "vznáší".
 ========================================================*/
 
 .hero-container {
-    position: relative;
-    z-index: 2;
     display: grid;
-    /* TŘI sloupce: text | prázdné místo pro paní | ikony.
-       Prostřední sloupec je prázdný – drží prostor,
-       do kterého paní z pozadí "spadne". */
     grid-template-columns:
-        minmax(300px, 0.9fr)
-        minmax(500px, 1.3fr)
-        minmax(200px, 240px);
+        minmax(340px, 1fr)      /* levý – text */
+        minmax(300px, 480px)    /* prostřední – prostor pro paní (zmenšeno) */
+        minmax(320px, 440px);   /* pravý – ikony (zvětšeno z 380 na 440) */
+
     align-items: center;
-    gap: 2.5rem;
+    gap: 4rem;
+
+    position: relative;
+    z-index: 2;   /* text a ikony NAD paní */
 }
 
 
 /*========================================================
   4) LEVÁ ČÁST (texty)
+--------------------------------------------------------
+  Sloupcový flex na plnou výšku – aby šlo tlačítka
+  přisát dolů a odstavec vycentrovat (margin:auto).
 ========================================================*/
 
 .hero-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 2rem;
+    height: 100%;
+    justify-content: flex-start;
+    gap: 0;
+
+    position: relative;
+    z-index: 3;   /* jistota, že text je nad paní */
 }
 
 
 /*========================================================
-  5) PROSTŘEDNÍ PANEL (obal videa)
+  5) PANÍ (video) – vrstva v POZADÍ
 --------------------------------------------------------
-  Toto je oblast, na kterou najíždíš myší, aby se
-  spustilo "pssst" gesto.
+  position:absolute → nezabírá místo v gridu, vznáší se.
+  left/top + translate = umístění jejího středu.
+  Chceš ji jinam? Změň left (míň = doleva) a top.
 ========================================================*/
 
 .hero-visual {
-    /* paní je vrstva na pozadí, vycentrovaná zhruba
-       nad prostředním (prázdným) sloupcem */
     position: absolute;
     top: 50%;
-    left: 55%;                 /* zhruba střed prostředního sloupce */
+    left: 48%;                       /* ← posun paní doleva/doprava */
     transform: translate(-50%, -50%);
 
-    z-index: 1;                /* pod textem a ikonami */
+    z-index: 1;                      /* pod textem i ikonami */
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    pointer-events: none;      /* text/ikony jdou klikat přes ni */
-
-    opacity: 1;                /* plně viditelná */
+    pointer-events: none;            /* klikání/hover projde na text a ikony… */
+    opacity: 1;
 }
 
-
-/*========================================================
-  6) HERO VIDEO (dvě videa uprostřed)
---------------------------------------------------------
-  Uprostřed leží DVĚ videa přesně na sobě:
-    .hero-video-idle  = klidová smyčka (vidět v klidu)
-    .hero-video-shush = "pssst" gesto (vidět při najetí)
-  Přepínají se plynulým prolnutím (opacity).
-========================================================*/
-
-/* Plocha, ve které videa leží */
+/* …ale samotná plocha videa hover přijímá (kvůli "pssst") */
 .hero-image {
     position: relative;
-   width: 24vw;        /* pevná šířka podle šířky okna – TADY se mění velikost */
-    max-width: 620x;
-pointer-events: auto;
+    width: 30vw;                     /* velikost paní – tady se mění */
+    max-width: 760px;
+    pointer-events: auto;
 
     display: flex;
     justify-content: center;
@@ -172,26 +155,80 @@ pointer-events: auto;
     transition: transform .35s ease;
     z-index: 5;
 
-    /* poměr stran plochy – video je spíš na výšku (3:4).
-       Kdyby ti video vycházelo jinak, změň tenhle poměr:
-       1 / 1 = čtverec, 16 / 9 = na šířku, 3 / 4 = na výšku */
-    aspect-ratio: 1244 / 1660;
+    aspect-ratio: 1244 / 1660;       /* poměr videa (na výšku) */
 }
 
-/* jemné přiblížení při najetí myší */
+/* jemná záře za paní */
+.hero-visual::before {
+    content: "";
+    position: absolute;
+    inset: -120px;
+    z-index: -2;
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(173, 120, 255, .35) 0%,
+            rgba(130, 90, 255, .20) 22%,
+            rgba(80, 45, 170, .10) 45%,
+            transparent 72%
+        ),
+        radial-gradient(
+            circle at 35% 65%,
+            rgba(80, 255, 240, .12) 0%,
+            transparent 60%
+        ),
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(255, 120, 230, .10) 0%,
+            transparent 60%
+        );
+
+    filter: blur(90px);
+    opacity: .95;
+
+    animation: heroGlow 12s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+/* širší, tmavší podkladová záře */
+.hero-visual::after {
+    content: "";
+    position: absolute;
+    inset: -220px;
+    z-index: -3;
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(95, 65, 190, .18) 0%,
+        rgba(55, 25, 120, .08) 45%,
+        transparent 78%
+    );
+
+    filter: blur(150px);
+}
+
+@keyframes heroGlow {
+    0%   { transform: scale(1);    opacity: .82; }
+    50%  { transform: scale(1.06); opacity: 1;   }
+    100% { transform: scale(1);    opacity: .82; }
+}
+
+/* jemné přiblížení paní při najetí myší */
 .hero-visual:hover .hero-image {
     transform: scale(1.03);
 }
 
-/*--------------------------------------------------------
-  SPOLEČNÝ STYL OBOU VIDEÍ
---------------------------------------------------------
-  Obě videa leží přesně na sobě (position:absolute).
-  Vidět je vždy jen jedno (řeší opacity + hover níže).
 
-  SPLÝVÁNÍ: screen zprůhlední černé části videa,
-  maska.png (ruční) dělá tvar (bílá vidět, černá skrýt).
---------------------------------------------------------*/
+/*========================================================
+  6) HERO VIDEO (dvě videa přesně na sobě)
+--------------------------------------------------------
+  .hero-video-idle  = klidová smyčka (vidět v klidu)
+  .hero-video-shush = "pssst" gesto (vidět při najetí)
+  Přepínají se prolnutím (opacity).
+========================================================*/
 
 .hero-video {
     position: absolute;
@@ -205,10 +242,7 @@ pointer-events: auto;
     /* černé části videa zprůhlední a splynou s pozadím */
     mix-blend-mode: screen;
 
-    /* TVOJE RUČNÍ MASKA (maska.png):
-       bílá = vidět, černá = průhledné.
-       mask-mode: luminance = maska se řídí JASEM (černá/bílá),
-       ne průhledností. To je důležité, aby fungovala. */
+    /* ruční maska (bílá = vidět, černá = průhledné) */
     -webkit-mask-image: url("../../images/hero/maska.png");
     mask-image: url("../../images/hero/maska.png");
 
@@ -224,38 +258,16 @@ pointer-events: auto;
     -webkit-mask-position: center;
     mask-position: center;
 
-    /* plynulé prolnutí mezi klidem a "pssst" */
     transition: opacity .5s ease;
 }
 
-/* KLIDOVÉ video je v základu vidět */
-.hero-video-idle {
-    opacity: 1;
-}
+.hero-video-idle  { opacity: 1; }
+.hero-video-shush { opacity: 0; }
 
-/* "PSSST" video je v základu skryté (jen opacity, aby se
-   video normálně načítalo a přehrávalo) */
-.hero-video-shush {
-    opacity: 0;
-}
-/*--------------------------------------------------------
-  PŘEPNUTÍ PŘI NAJETÍ MYŠI
-  Najedeš na střed → klid zmizí, "pssst" se objeví.
-
-  DŮLEŽITÉ: platí JEN na zařízeních s myší.
-  Na telefonu/tabletu (prst) běží pouze klidová smyčka.
---------------------------------------------------------*/
-
+/* přepnutí při najetí myší (jen zařízení s myší) */
 @media (hover: hover) {
-
-    .hero-visual:hover .hero-video-idle {
-        opacity: 0;
-    }
-
-    .hero-visual:hover .hero-video-shush {
-        opacity: 1;
-    }
-
+    .hero-visual:hover .hero-video-idle  { opacity: 0; }
+    .hero-visual:hover .hero-video-shush { opacity: 1; }
 }
 
 
@@ -263,71 +275,70 @@ pointer-events: auto;
   7) TEXTY VLEVO (nadpis, odstavec, malý nápis)
 ========================================================*/
 
-/* velký nadpis */
-.hero h1{
-    font-size: 2.6rem;
+.hero h1 {
+    font-size: 2.3rem;
     font-weight: 600;
     line-height: 1.25;
     letter-spacing: -0.5px;
-    margin: 8px 0 5px 0;   /* menší mezera nahoře = blíž k zelenému nápisu */
-    color: #ffffff;         /* nadpis je BÍLÝ, ne zelený */
+    color: #ffffff;
 }
-/* slovo "AI" v nadpisu je fialové (zbytek nadpisu bílý) */
-.hero h1 span{
+
+/* slovo "AI" v nadpisu je fialové */
+.hero h1 span {
     color: var(--primary-color);
 }
 
-.hero p{
+.hero p {
     color: var(--text-muted);
-    font-size: 1.05rem;     /* menší (bylo 1.2rem) */
-    font-weight: 300;       /* lehčí */
-    line-height: 1.9;       /* vzdušnější */
-    max-width: 440px;       /* užší sloupec = elegantnější */
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.9;
+    max-width: 440px;
 }
 
-/* malý nápis nad nadpisem (AI CREATOR • PROMPT ENGINEER…) */
-.hero-tag{
+/* malý nápis nad nadpisem */
+.hero-tag {
     color: var(--accent-color);
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: .9rem;
     white-space: nowrap;
-    margin-bottom: -0.9rem;   /* přitáhne nadpis blíž pod zelený nápis */
 }
+
 
 /*========================================================
   8) PRAVÝ SLOUPEC – SLUŽBY (plovoucí ikony)
---------------------------------------------------------
-  Ikony jsou "plovoucí" – bez pozadí a bez rámečku.
 ========================================================*/
 
-.hero-services{
-    display:flex;
-    flex-direction:column;
-    gap:1rem;
+.hero-services {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    margin-left: auto;   /* přisune celý panel doprava, ke kraji sloupce */
+
+    position: relative;
+    z-index: 3;   /* ikony nad paní */
 }
 
-.service-card{
-    display:flex;
-    flex-direction:row;
-    align-items:center;
-    gap:1.2rem;
+.service-card {
+    position: relative;             /* kotva pro samostatnou ikonu */
+    display: flex;
+    flex-direction: column;         /* nadpis + popisek pod sebe */
+    justify-content: center;
 
-    padding:1rem 0.5rem;   /* jen malý dýchací prostor, žádný "box" */
-    min-height:100px;
+    padding: 1rem 0.5rem 1rem 150px; /* 150px vlevo = vyhrazené místo pro ikonu */
+    min-height: 120px;
 
-    background:transparent; /* bez pozadí */
-    border:none;            /* bez ohraničení */
-    border-radius:0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
 
-    position:relative;      /* kvůli jiskřičkám */
-
-    transition:transform .35s ease;
+    transition: transform .35s ease;
 }
 
-/* karta se při najetí jen jemně nadzvedne */
-.service-card:hover{
-    transform:translateY(-6px);
+.service-card:hover {
+    transform: translateY(-6px);
 }
 
 
@@ -335,21 +346,19 @@ pointer-events: auto;
   9) IKONA SLUŽBY + JISKŘENÍ
 ========================================================*/
 
-.service-icon{
-    width:72px;
-    height:72px;
-    flex-shrink:0;
+.service-icon {
+    width: 160px;     /* ← velikost ikony (jen tady měň, obě čísla stejná) */
+    height: 160px;
+    flex-shrink: 0;
 
-    object-fit:contain;
+    object-fit: contain;
 
     transition:
         transform .35s ease,
         filter .35s ease;
 
-    /* jemná fialová záře i v klidu */
-    filter:drop-shadow(0 0 8px rgba(124,58,237,.25));
+    filter: drop-shadow(0 0 8px rgba(124, 58, 237, .25));
 
-    /* jemné poletování nahoru–dolů */
     animation: iconBob 4s ease-in-out infinite;
 }
 
@@ -358,13 +367,11 @@ pointer-events: auto;
     50%      { transform: translateY(-6px); }
 }
 
-/* každá další ikona poletuje s malým zpožděním (vlnka) */
-.service-card:nth-child(2) .service-icon{ animation-delay: .3s; }
-.service-card:nth-child(3) .service-icon{ animation-delay: .6s; }
-.service-card:nth-child(4) .service-icon{ animation-delay: .9s; }
+.service-card:nth-child(2) .service-icon { animation-delay: .3s; }
+.service-card:nth-child(3) .service-icon { animation-delay: .6s; }
+.service-card:nth-child(4) .service-icon { animation-delay: .9s; }
 
-/* při najetí: ikona se zastaví, zvětší a rozzáří */
-.service-card:hover .service-icon{
+.service-card:hover .service-icon {
     animation-play-state: paused;
 
     transform:
@@ -372,88 +379,79 @@ pointer-events: auto;
         scale(1.12);
 
     filter:
-        drop-shadow(0 0 22px rgba(124,58,237,.65))
-        drop-shadow(0 0 40px rgba(0,212,255,.35));
+        drop-shadow(0 0 22px rgba(124, 58, 237, .65))
+        drop-shadow(0 0 40px rgba(0, 212, 255, .35));
 }
 
-/*--------------------------------------------------------
-  JISKŘENÍ PŘI NÁJEZDU MYŠI
-  Dvě hvězdičky (::before a ::after) kolem ikony,
-  které při najetí problikávají.
---------------------------------------------------------*/
+.service-icon-wrap {
+    position: absolute;        /* ikona je samostatná vrstva, nezávislá na textu */
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
 
-.service-icon-wrap{
-    position:relative;
-    flex-shrink:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .service-icon-wrap::before,
-.service-icon-wrap::after{
-    content:"✦";
-    position:absolute;
+.service-icon-wrap::after {
+    content: "✦";
+    position: absolute;
 
-    color:#c6a4ff;
-    font-size:.8rem;
+    color: #c6a4ff;
+    font-size: .8rem;
 
-    opacity:0;              /* v klidu neviditelné */
-    pointer-events:none;
+    opacity: 0;
+    pointer-events: none;
 
-    text-shadow:0 0 8px rgba(124,58,237,.9);
+    text-shadow: 0 0 8px rgba(124, 58, 237, .9);
 }
 
-/* jiskra vlevo nahoře */
-.service-icon-wrap::before{
-    top:2px;
-    left:0px;
+.service-icon-wrap::before {
+    top: 2px;
+    left: 0px;
 }
 
-/* jiskra vpravo dole */
-.service-icon-wrap::after{
-    bottom:4px;
-    right:2px;
-    font-size:.6rem;
+.service-icon-wrap::after {
+    bottom: 4px;
+    right: 2px;
+    font-size: .6rem;
 }
 
-/* při najetí jiskřičky blikají (druhá s posunem = střídavě) */
-.service-card:hover .service-icon-wrap::before{
+.service-card:hover .service-icon-wrap::before {
     animation: sparkle 1.1s ease-in-out infinite;
 }
-.service-card:hover .service-icon-wrap::after{
+.service-card:hover .service-icon-wrap::after {
     animation: sparkle 1.1s ease-in-out .55s infinite;
 }
 
-@keyframes sparkle{
-    0%,100%{
-        opacity:0;
-        transform:scale(.4) rotate(0deg);
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(.4) rotate(0deg);
     }
-    50%{
-        opacity:1;
-        transform:scale(1.2) rotate(90deg);
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(90deg);
     }
 }
 
-/* texty v kartě služby */
-.service-card h3{
-    font-size:1.05rem;
-    font-weight:600;
+.service-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
 }
 
-.service-card p{
-    color:var(--text-muted);
-    font-size:.95rem;
-    line-height:1.6;
+.service-card p {
+    color: var(--text-muted);
+    font-size: .95rem;
+    line-height: 1.6;
 }
 
 
 /*========================================================
   10) FLOATING "Text" – malá plovoucí kartička
---------------------------------------------------------
-  Ta malá bublina s hvězdičkou a nápisem "Text",
-  co se vznáší nad videem.
 ========================================================*/
 
 .floating-card {
@@ -464,14 +462,14 @@ pointer-events: auto;
 
     padding: .8rem 1rem;
 
-    background: rgba(18,18,31,.55);
-    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(18, 18, 31, .55);
+    border: 1px solid rgba(255, 255, 255, .08);
     backdrop-filter: blur(18px);
     border-radius: 18px;
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,.35),
-        0 0 28px rgba(124,58,237,.18);
+        0 12px 30px rgba(0, 0, 0, .35),
+        0 0 28px rgba(124, 58, 237, .18);
 
     color: white;
     z-index: 10;
@@ -479,33 +477,58 @@ pointer-events: auto;
     animation: floatingCard 6s ease-in-out infinite;
 }
 
-.floating-icon{
-    width:34px;
-    height:34px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:10px;
-    background:rgba(124,58,237,.18);
-    color:#b784ff;
-    font-size:1rem;
+.floating-icon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: rgba(124, 58, 237, .18);
+    color: #b784ff;
+    font-size: 1rem;
 }
 
-.floating-label{
-    font-size:.9rem;
-    font-weight:600;
-    letter-spacing:.5px;
+.floating-label {
+    font-size: .9rem;
+    font-weight: 600;
+    letter-spacing: .5px;
 }
 
-/* umístění kartičky (vpravo nahoře nad videem) */
-.floating-text{
-    top:8%;
-    right:-10px;
+.floating-text {
+    top: 8%;
+    right: -10px;
 }
 
 @keyframes floatingCard {
-    0%{   transform:translateY(0);    }
-    50%{  transform:translateY(-8px); }
-    100%{ transform:translateY(0);    }
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
 }
 
+
+/*========================================================
+  11) MEZERY V LEVÉM SLOUPCI (finální)
+--------------------------------------------------------
+  Odstavec má margin:auto nahoře i dole → vycentruje se
+  mezi nadpis a tlačítka. Tlačítka margin-top:auto → dolů.
+========================================================*/
+
+.hero-tag {
+    margin: 0 0 0.4rem 0 !important;
+}
+
+.hero h1 {
+    margin-top: 0 !important;
+    margin-bottom: 1.2rem !important;
+}
+
+.hero p {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.hero-buttons {
+    margin-top: auto;       /* všechen zbylý prostor je nad tlačítky → dosednou dolů */
+    padding-top: 1rem;
+}

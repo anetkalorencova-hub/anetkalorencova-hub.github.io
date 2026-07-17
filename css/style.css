@@ -34,5 +34,8 @@
 
 
 /*========================================================
-  UTILITIES
+  RESPONSIVE
 ========================================================*/
+
+@import url("./responsive/tablet.css");
+@import url("./responsive/mobile.css");

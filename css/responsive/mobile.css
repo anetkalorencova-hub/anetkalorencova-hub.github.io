@@ -1,0 +1,223 @@
+/*========================================================
+  MOBILNÍ STYLY
+--------------------------------------------------------
+  VŠECHNO je uvnitř @media (max-width:640px), takže to
+  platí JEN na telefonu. Desktop a tablet to NEOVLIVNÍ.
+
+  DŮLEŽITÉ: nová pravidla piš DOVNITŘ té složené závorky
+  @media { ... }, NIKDY za ni – jinak by sáhla na desktop.
+========================================================*/
+
+@media (max-width: 640px) {
+
+    /* ==========================
+       HEADER – logo + ikona menu vpravo nahoře
+    ========================== */
+
+    /* obsah skoro ke krajům */
+    .container {
+        width: 80%;
+    }
+
+    /* schováme textovou navigaci a jazyk/téma tlačítka */
+    .navigation {
+        display: none;
+    }
+
+    /* header = kotva pro absolutní ikonu + pevná NÍZKÁ výška
+       (min-height !important přebije desktopových 120px) */
+    .header .container {
+
+    position: relative;
+
+    height: 72px !important;
+    min-height: 72px !important;
+
+    display: flex;
+    align-items: center;
+}
+
+    /* IKONA MENU – vpravo nahoře, absolutní (nezabírá místo,
+       neroztahuje header). Velikost měň přes width/height. */
+    .header-right {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+
+        width: 64px;         /* ← velikost ikony (obě čísla stejná) */
+        height: 64px;
+
+        /* vypneme původní tlačítka uvnitř, ať nepřekáží */
+        font-size: 0;
+
+        background-image: url("../../images/icons/menu.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    /* jistota: schovat jazyk/téma tlačítka uvnitř .header-right */
+    .language-button,
+    .theme-button {
+        display: none;
+    }
+
+    /* logo menší */
+    .logo-name {
+        font-size: 1.7rem;
+        letter-spacing: 4px;
+    }
+
+    .logo-sub {
+        font-size: .65rem;
+        letter-spacing: 3px;
+    }
+.logo {
+        .logo{
+    margin-top: 5px;
+}
+   /* posune ANETA trochu dolů */
+    }
+
+    /* ==========================
+       HERO – vše pod sebe, přilepené k záhlaví
+    ========================== */
+
+    .hero {
+        min-height: auto !important;   /* přebije desktopových 700px */
+        margin-top: 0 !important;      /* žádná mezera nad hero */
+        padding-top: 0 !important;     /* hero začíná hned pod headerem */
+        padding-bottom: 2rem;
+        overflow: hidden;
+    }
+
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        gap: 2rem;
+    }
+
+    /* ---------- TEXT ---------- */
+
+    .hero-content {
+        position: relative;
+        order: 1;
+        z-index: 10;
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* jemné zatmavení pod textem (čitelnost přes paní) */
+    .hero-content::before {
+        content: "";
+        position: absolute;
+        inset: -20px;
+
+        background: linear-gradient(
+            90deg,
+            rgba(8, 8, 12, .92) 0%,
+            rgba(8, 8, 12, .78) 45%,
+            rgba(8, 8, 12, .35) 80%,
+            transparent 100%
+        );
+
+        border-radius: 24px;
+        z-index: -1;
+    }
+
+    /* ---------- PANÍ (pozadí) ---------- */
+
+    .hero-visual {
+        position: absolute;
+        right: -120px;
+        left: auto;
+        top: 120px;
+        transform: none;
+        margin: 0;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .hero-image {
+        width: 400px;
+    }
+
+
+    /* ==========================
+       IKONY SLUŽEB – řada vedle sebe, BEZ textů
+    ========================== */
+
+    .hero-services {
+        order: 2;
+        position: relative;
+        z-index: 10;
+        margin-left: 0;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;          /* ← zakáže zalamování, drží v jedné řadě */
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+
+    .service-card {
+        flex: 1;                    /* ← každá karta stejný díl šířky */
+        min-width: 0;               /* ← dovolí kartám se zmenšit, ať se vejdou */
+        padding: 0;
+        min-height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* schováme nadpisy i popisky – zůstane jen obrázek */
+    .service-card h3,
+    .service-card p {
+        display: none;
+    }
+
+    /* ikona zpět do normálního toku (na desktopu je absolute) */
+    .service-icon-wrap {
+        position: static;
+        transform: none;
+        left: auto;
+        top: auto;
+    }
+
+    /* velikost ikony služeb na mobilu */
+    .service-icon {
+        width: 100%;         /* ikona vyplní svůj box */
+        max-width: 64px;     /* ale ne víc než 64px */
+        height: auto;
+        aspect-ratio: 1;     /* zůstane čtvercová */
+    }
+
+
+    /* ==========================
+       TLAČÍTKA
+    ========================== */
+
+    .hero-buttons {
+        margin-top: 2rem;
+        padding-top: 0;
+    }
+
+    .btn-secondary {
+        background: rgba(10, 12, 22, .65);
+        border: 1px solid rgba(255, 255, 255, .12);
+        backdrop-filter: blur(14px);
+    }
+
+    .btn-secondary:hover {
+        background: rgba(18, 20, 35, .85);
+        border-color: rgba(130, 95, 255, .45);
+    }
+
+
+    /* ==========================
+       PROJECTS / další sekce – zatím beze změny
+    ========================== */
+
+}
