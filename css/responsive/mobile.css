@@ -133,17 +133,19 @@
         position: absolute;
         right: -120px;
         left: auto;
-        top: 120px;
+        top: 50%;
         transform: none;
         margin: 0;
         z-index: 1;
         pointer-events: none;
     }
 
-    .hero-image {
-        width: 400px;
-    }
-
+  .hero-image {
+    ...
+    width: 30vw;         /* ← velikost paní (procento šířky okna) */
+    max-width: 760px;    /* ← strop, přes který nepřeroste */
+    ...
+}
 
     /* ==========================
        IKONY SLUŽEB – řada vedle sebe, BEZ textů
