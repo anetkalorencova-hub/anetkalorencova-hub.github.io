@@ -1,0 +1,31 @@
+/*========================================================
+  PROMĚNNÉ
+----------------------------------------------------------
+  Barvy, velikosti a společné hodnoty projektu.
+========================================================*/
+
+:root{
+
+    /* Pozadí */
+    --bg-color:#0b0b14;
+    --surface-color:#14121f;
+
+    /* Hlavní barvy */
+    --primary-color:#7c3aed;
+    --primary-light:#a855f7;
+    --accent-color:#00d4ff;
+
+    /* Text */
+    --text-color:#ffffff;
+    --text-muted:#b3b3c6;
+
+    /* Ostatní */
+    --border-color:rgba(255,255,255,.08);
+
+    --container-width:1400px;
+
+    --border-radius:18px;
+
+    --transition:.3s ease;
+
+}

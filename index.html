@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+
+    <!-- =========================
+         ZÁKLADNÍ NASTAVENÍ
+    ========================= -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aneta Lorencová | AI Creator</title>
+
+    <meta name="description"
+        content="Portfolio Anety Lorencové – AI Creator, storyteller a tvůrkyně digitálního obsahu.">
+
+    <meta name="author" content="Aneta Lorencová">
+
+    <!-- =========================
+         GOOGLE FONTS
+    ========================= -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+        rel="stylesheet">
+
+    <!-- =========================
+         STYLY
+    ========================= -->
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="header">
+
+        <div class="container">
+
+            <!-- Logo (název + malý podnadpis "AI CREATOR") -->
+
+            <a href="#" class="logo">
+
+                <span class="logo-name">
+                    ANETA
+                    <span class="logo-star">✦</span>
+                </span>
+
+                <span class="logo-sub">AI CREATOR</span>
+
+            </a>
+
+            <!-- Navigace -->
+
+            <nav class="navigation">
+
+                <a href="#" class="active">Domů</a>
+                <a href="#">Projekty</a>
+                <a href="#">Články</a>
+                <a href="#">Videa</a>
+                <a href="#">O mně</a>
+                <a href="#">Kontakt</a>
+
+            </nav>
+
+            <!-- Pravá část headeru -->
+
+            <div class="header-right">
+
+                <button class="language-button">
+                    CZ | EN
+                </button>
+
+                <button
+                    class="theme-button"
+                    aria-label="Přepnout barevný režim">
+
+                    🌙
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- =========================
+         HLAVNÍ OBSAH
+    ========================= -->
+
+    <main>
+
+        <!--======================================================
+            HERO
+        =======================================================-->
+
+        <section class="hero">
+
+            <div class="container hero-container">
+
+                <!--======================================================
+                    LEVÁ ČÁST
+                =======================================================-->
+
+                <div class="hero-content">
+
+                    <span class="hero-tag">
+                        AI CREATOR • PROMPT ENGINEER • CONTENT WRITER
+                    </span>
+
+                    <h1>
+                        Proměňuji nápady
+                        <br>
+                        na obsah pomocí <span>AI</span>
+                    </h1>
+
+                    <p>
+                        Vytvářím texty, videa a vizuály,
+                        které zaujmou, inspirují
+                        a přinášejí hodnotu.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#" class="btn btn-primary">
+                            Prohlédnout projekty
+                            <span class="btn-arrow">→</span>
+                        </a>
+
+                        <a href="#" class="btn btn-secondary">
+                            O mně
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!--======================================================
+                    STŘED
+                =======================================================-->
+
+                <div class="hero-visual">
+
+                    <!--==================================================
+                        HERO MÉDIUM (video / obrázek)
+                        --------------------------------------------------
+                        Uprostřed běží KLIDOVÉ video ve smyčce.
+                        Při najetí myší se plynule prolne na video
+                        s gestem "pssst" (prst u úst), které se přehraje.
+
+                        JAK VYMĚNIT VIDEA:
+                        Nahraj své soubory do images/hero/ a pojmenuj je:
+                          - hero-idle.mp4   = klidová smyčka
+                          - hero-shush.mp4  = gesto "pssst"
+                        (nebo změň src níže na své názvy)
+
+                        Fallback: kdyby video chybělo, ukáže se
+                        obrázek hero-silueta.png, aby se web nerozbil.
+                    ===================================================-->
+
+                    <div class="hero-image" id="heroMedia">
+
+                        <!-- KLIDOVÉ video (běží ve smyčce, tiché) -->
+                        <video
+                            class="hero-video hero-video-idle"
+                            autoplay muted loop playsinline
+                            poster="images/hero/hero-silueta.png">
+                            <source src="images/hero/hero-idle.mp4" type="video/mp4">
+                        </video>
+
+                        <!-- "PSSST" video (běží skrytě ve smyčce,
+                             při najetí se jen odkryje) -->
+                        <video
+                            class="hero-video hero-video-shush"
+                            autoplay muted loop playsinline
+                            poster="images/hero/hero-silueta.png">
+                            <source src="images/hero/hero-shush.mp4" type="video/mp4">
+                        </video>
+
+                    </div>
+
+  
+                <!--======================================================
+                    PRAVÁ ČÁST
+                =======================================================-->
+
+                <div class="hero-services">
+
+                    <article class="service-card">
+
+                        <div class="service-icon-wrap">
+<img
+                            src="images/icons/AI brain.png"
+                            alt="AI strategie"
+                            class="service-icon">
+</div>
+
+                        <h3>AI strategie</h3>
+
+                        <p>
+                            Nápady, prompty, workflow
+                        </p>
+
+                    </article>
+
+                    <article class="service-card">
+
+                        <div class="service-icon-wrap">
+<img
+                            src="images/icons/text.png"
+                            alt="Psaní a obsah"
+                            class="service-icon">
+</div>
+
+                        <h3>Psaní &amp; obsah</h3>
+
+                        <p>
+                            Články, blogy, copywriting
+                        </p>
+
+                    </article>
+
+                    <article class="service-card">
+
+                        <div class="service-icon-wrap">
+<img
+                            src="images/icons/video.png"
+                            alt="Videa a audio"
+                            class="service-icon">
+</div>
+
+                        <h3>Videa &amp; audio</h3>
+
+                        <p>
+                            AI videa, podcasty, voiceover
+                        </p>
+
+                    </article>
+
+                    <article class="service-card">
+
+                        <div class="service-icon-wrap">
+<img
+                            src="images/icons/image.png"
+                            alt="Obrázky a design"
+                            class="service-icon">
+</div>
+
+                        <h3>Obrázky &amp; design</h3>
+
+                        <p>
+                            AI vizuály, grafika, úpravy
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!--======================================================
+            SEKCE: MOJE PRÁCE (vybrané projekty)
+            ------------------------------------------------------
+            Struktura:
+              <section class="work">            = celá sekce
+                <div class="container">         = zarovnání na střed
+                  <div class="work-head">       = horní řádek (nadpis + tlačítko)
+                  <div class="work-grid">       = mřížka 4 karet
+                    <article class="work-card"> = jedna karta projektu
+        =======================================================-->
+
+        <section class="work">
+
+            <div class="container">
+
+                <!--==================================================
+                    HORNÍ ŘÁDEK SEKCE
+                    Vlevo: malý nadpis + velký nadpis
+                    Vpravo: tlačítko "Zobrazit všechny projekty"
+                ===================================================-->
+
+                <div class="work-head">
+
+                    <div class="work-head-text">
+
+                        <!-- malý fialový/modrý nápis nad nadpisem -->
+                        <span class="section-label">✦ Vybrané projekty</span>
+
+                        <!-- velký nadpis sekce -->
+                        <h2 class="section-title">Moje práce</h2>
+
+                    </div>
+
+                    <!-- tlačítko vpravo se šipkou -->
+                    <a href="#" class="btn-ghost">
+                        Zobrazit všechny projekty
+                        <span class="btn-arrow">→</span>
+                    </a>
+
+                </div>
+
+                <!--==================================================
+                    MŘÍŽKA PROJEKTŮ
+                    Obsahuje 4 karty. Každá karta = jeden projekt.
+                    Chceš přidat/ubrat projekt? Zkopíruj/smaž celý
+                    blok <article class="work-card"> ... </article>.
+                ===================================================-->
+
+                <div class="work-grid">
+
+                    <!-- KARTA 1 -->
+                    <article class="work-card">
+
+                        <!-- obrázek projektu -->
+                        <div class="work-card-image">
+                            <img src="images/projects/voices.jpg"
+                                 alt="Voices from the Void">
+                            <!-- štítek (kategorie) v rohu obrázku -->
+                            <span class="work-tag">AI Video</span>
+                        </div>
+
+                        <!-- textová část karty -->
+                        <div class="work-card-body">
+                            <h3>Voices from the Void</h3>
+                            <p>
+                                Temný mytologický příběh vytvořený
+                                pomocí AI videa a hlasu.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <!-- KARTA 2 -->
+                    <article class="work-card">
+
+                        <div class="work-card-image">
+                            <img src="images/projects/kuks.jpg"
+                                 alt="Kuks 1726">
+                            <span class="work-tag">Historické rekonstrukce</span>
+                        </div>
+
+                        <div class="work-card-body">
+                            <h3>Kuks 1726</h3>
+                            <p>
+                                Historická rekonstrukce místa pomocí
+                                AI vizualizací.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <!-- KARTA 3 -->
+                    <article class="work-card">
+
+                        <div class="work-card-image">
+                            <img src="images/projects/stories.jpg"
+                                 alt="Příběhy, které zůstávají">
+                            <span class="work-tag">Články</span>
+                        </div>
+
+                        <div class="work-card-body">
+                            <h3>Příběhy, které zůstávají</h3>
+                            <p>
+                                Články o mytologii, historii, AI
+                                a kreativním světě.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <!-- KARTA 4 -->
+                    <article class="work-card">
+
+                        <div class="work-card-image">
+                            <img src="images/projects/experiments.jpg"
+                                 alt="Experimenty &amp; testy">
+                            <span class="work-tag">AI Lab</span>
+                        </div>
+
+                        <div class="work-card-body">
+                            <h3>Experimenty &amp; testy</h3>
+                            <p>
+                                Testování nástrojů, promptů
+                                a AI workflow.
+                            </p>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

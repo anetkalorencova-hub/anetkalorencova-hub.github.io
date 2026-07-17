@@ -1,0 +1,272 @@
+/*========================================================
+  SEKCE: MOJE PRÁCE (vybrané projekty)
+--------------------------------------------------------
+  Obsahuje:
+    1) .work            – celá sekce (odsazení shora/zdola)
+    2) .work-head       – horní řádek: nadpis vlevo, tlačítko vpravo
+    3) .btn-ghost       – průhledné tlačítko "Zobrazit všechny projekty"
+    4) .work-grid       – mřížka 4 karet
+    5) .work-card       – jedna karta projektu
+    6) .work-card-image – obrázek + štítek v rohu
+    7) .work-card-body  – nadpis + popisek karty
+    8) RESPONZIVITA     – jak se mřížka chová na menších obrazovkách
+========================================================*/
+
+
+/*========================================================
+  1) CELÁ SEKCE
+--------------------------------------------------------
+  padding = mezera nahoře a dole. Zvětši/zmenši číslo,
+  pokud chceš víc/míň prostoru kolem sekce.
+========================================================*/
+
+.work{
+
+    padding:6rem 0;
+
+}
+
+
+/*========================================================
+  2) HORNÍ ŘÁDEK (nadpis vlevo + tlačítko vpravo)
+--------------------------------------------------------
+  display:flex + space-between = nadpis a tlačítko se
+  roztáhnou na opačné strany.
+========================================================*/
+
+.work-head{
+
+    display:flex;
+    justify-content:space-between;   /* nadpis vlevo, tlačítko vpravo */
+    align-items:flex-end;            /* zarovnání na spodní linku */
+    gap:2rem;
+
+    margin-bottom:3rem;              /* mezera mezi nadpisem a kartami */
+
+}
+
+/* zrušíme spodní mezeru u nadpisu uvnitř hlavičky,
+   ať tlačítko sedí přesně na jeho úrovni */
+.work-head .section-title{
+
+    margin-bottom:0;
+
+}
+
+
+/*========================================================
+  3) TLAČÍTKO "ZOBRAZIT VŠECHNY PROJEKTY"
+--------------------------------------------------------
+  Průhledné tlačítko s tenkým rámečkem a šipkou.
+  Při najetí myší se rámeček i text rozsvítí fialově
+  a šipka popojede doprava.
+========================================================*/
+
+.btn-ghost{
+
+    display:inline-flex;
+    align-items:center;
+    gap:.6rem;
+
+    padding:.9rem 1.6rem;
+
+    color:var(--text-color);
+    text-decoration:none;
+    font-weight:600;
+    white-space:nowrap;              /* text se nezalomí */
+
+    background:rgba(255,255,255,.02);
+    border:1px solid var(--border-color);
+    border-radius:14px;
+
+    transition:var(--transition);
+
+}
+
+.btn-ghost:hover{
+
+    border-color:var(--primary-color);
+    color:var(--primary-light);
+    transform:translateY(-2px);
+
+}
+
+/* šipka uvnitř tlačítka */
+.btn-arrow{
+
+    transition:var(--transition);
+
+}
+
+/* při najetí myší šipka popojede doprava */
+.btn-ghost:hover .btn-arrow{
+
+    transform:translateX(4px);
+
+}
+
+
+/*========================================================
+  4) MŘÍŽKA PROJEKTŮ
+--------------------------------------------------------
+  grid-template-columns: repeat(4, 1fr)
+    = 4 stejně široké sloupce vedle sebe.
+  gap = mezera mezi kartami.
+========================================================*/
+
+.work-grid{
+
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1.5rem;
+
+}
+
+
+/*========================================================
+  5) JEDNA KARTA PROJEKTU
+--------------------------------------------------------
+  overflow:hidden = obrázek se ořízne podle zaoblených rohů.
+  Při najetí myší se karta nadzvedne a rozsvítí okraj.
+========================================================*/
+
+.work-card{
+
+    display:flex;
+    flex-direction:column;           /* obrázek nahoře, text pod ním */
+
+    background:var(--surface-color);
+    border:1px solid var(--border-color);
+    border-radius:var(--border-radius);
+
+    overflow:hidden;
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+
+}
+
+.work-card:hover{
+
+    transform:translateY(-8px);
+    border-color:rgba(124,58,237,.45);
+    box-shadow:0 18px 40px rgba(0,0,0,.4),
+               0 0 30px rgba(124,58,237,.20);
+
+}
+
+
+/*========================================================
+  6) OBRÁZEK KARTY + ŠTÍTEK
+--------------------------------------------------------
+  Poměr stran obrázku držíme přes aspect-ratio,
+  aby byly všechny karty stejně vysoké.
+========================================================*/
+
+.work-card-image{
+
+    position:relative;               /* kvůli štítku v rohu */
+    aspect-ratio:16 / 11;            /* poměr stran obrázku */
+    overflow:hidden;
+
+}
+
+.work-card-image img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;                /* obrázek vyplní plochu bez deformace */
+
+    transition:transform .5s ease;
+
+}
+
+/* jemné přiblížení obrázku při najetí myší na kartu */
+.work-card:hover .work-card-image img{
+
+    transform:scale(1.06);
+
+}
+
+/* ŠTÍTEK (kategorie) v levém dolním rohu obrázku */
+.work-tag{
+
+    position:absolute;
+    left:1rem;
+    bottom:1rem;
+
+    padding:.35rem .8rem;
+
+    background:rgba(124,58,237,.85);
+    color:#fff;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+
+    border-radius:8px;
+    backdrop-filter:blur(4px);
+
+}
+
+
+/*========================================================
+  7) TEXTOVÁ ČÁST KARTY (nadpis + popisek)
+========================================================*/
+
+.work-card-body{
+
+    padding:1.5rem;
+
+}
+
+.work-card-body h3{
+
+    font-size:1.2rem;
+    font-weight:700;
+    margin-bottom:.6rem;
+
+}
+
+.work-card-body p{
+
+    color:var(--text-muted);
+    font-size:.95rem;
+    line-height:1.6;
+
+}
+
+
+/*========================================================
+  8) RESPONZIVITA
+--------------------------------------------------------
+  Jak se mřížka přizpůsobí menším obrazovkám:
+    - do 1100px: 2 karty vedle sebe
+    - do 640px : 1 karta pod druhou + tlačítko pod nadpis
+========================================================*/
+
+/* TABLETY: 2 sloupce */
+@media (max-width:1100px){
+
+    .work-grid{
+        grid-template-columns:repeat(2, 1fr);
+    }
+
+}
+
+/* MOBILY: 1 sloupec */
+@media (max-width:640px){
+
+    .work-grid{
+        grid-template-columns:1fr;
+    }
+
+    /* nadpis a tlačítko pod sebe */
+    .work-head{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}

@@ -1,0 +1,82 @@
+/*========================================================
+  TLAČÍTKA
+========================================================*/
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-top:40px;
+
+}
+
+
+
+/* Společný vzhled */
+
+.btn{
+
+    display:inline-flex;         /* text a šipka na jedné lince */
+    align-items:center;
+    gap:.6rem;
+
+    padding:16px 28px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+/* šipka uvnitř tlačítka popojede doprava při najetí myší */
+.btn:hover .btn-arrow{
+
+    transform:translateX(4px);
+
+}
+
+.btn .btn-arrow{
+
+    transition:var(--transition);
+
+}
+
+
+
+/* Primární */
+
+.btn-primary{
+
+    background:var(--primary-color);
+
+    color:white;
+
+}
+
+
+
+/* Sekundární */
+
+.btn-secondary{
+
+    border:1px solid rgba(255,255,255,.15);
+
+    color:white;
+
+}
+
+
+
+/* Hover */
+
+.btn:hover{
+
+    transform:translateY(-4px);
+
+}

@@ -1,0 +1,21 @@
+=========================================
+  KAM DÁT VIDEA (a jak je pojmenovat)
+=========================================
+
+Sem, do TÉTO složky (images/hero/), nahraj svá dvě videa
+a pojmenuj je PŘESNĚ takto (malými písmeny, s pomlčkou):
+
+    hero-idle.mp4    <- klidová smyčka (běží pořád dokola)
+    hero-shush.mp4   <- gesto "pssst" (přehraje se při najetí myší)
+
+POZOR na časté chyby v názvu:
+    hero-shus.mp4     = ŠPATNĚ (chybí druhé "h" na konci)
+    hero-idle.mp4.mp4 = ŠPATNĚ (dvojitá koncovka)
+    Hero-Idle.mp4     = ŠPATNĚ (velká písmena)
+    hero_idle.mp4     = ŠPATNĚ (podtržítko místo pomlčky)
+
+Až tu obě videa budou se správnými názvy, web je
+automaticky zobrazí. Nic v kódu měnit nemusíš.
+
+Tento soubor (PŘEČTI-MĚ-videa.txt) můžeš klidně smazat.
+=========================================

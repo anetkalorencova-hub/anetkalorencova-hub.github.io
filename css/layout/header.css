@@ -1,0 +1,246 @@
+/*========================================================
+  HEADER
+========================================================*/
+
+.header{
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    /* sytější tmavé pozadí s jemnou fialovou září dole */
+    background:
+        linear-gradient(
+            180deg,
+            rgba(16,14,28,.92),
+            rgba(11,11,20,.82)
+        );
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    /* výraznější spodní linka – tenký fialový přechod */
+    border-bottom:1px solid rgba(124,58,237,.22);
+
+    /* jemný stín pod panelem, ať "leží" nad obsahem */
+    box-shadow:0 6px 30px rgba(0,0,0,.35);
+
+    transition:var(--transition);
+
+}
+
+
+
+/* Kontejner – VĚTŠÍ výška panelu */
+
+.header .container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    min-height:120px;   /* dřív 90px – panel je teď vyšší */
+
+}
+
+
+
+/*========================================================
+  LOGO
+========================================================*/
+
+/* Logo je teď sloupec: název nahoře, "AI CREATOR" pod ním */
+.logo{
+
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+
+    color:var(--text-color);
+    text-decoration:none;
+
+    transition:var(--transition);
+
+}
+
+/* horní řádek loga: velký název ANETA + hvězdička */
+.logo-name{
+
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+
+    font-size:2.3rem;      /* dřív 1.9rem – větší logo */
+    font-weight:800;
+    letter-spacing:7px;
+    line-height:1;
+
+}
+
+/* malá fialová hvězdička vedle názvu */
+.logo-star{
+
+    color:var(--primary-light);
+    font-size:1.3rem;
+
+    /* jemná záře kolem hvězdičky */
+    text-shadow:0 0 12px rgba(168,85,247,.7);
+
+}
+
+/* podnadpis "AI CREATOR" pod názvem */
+.logo-sub{
+
+    color:var(--primary-light);
+    font-size:.78rem;      /* mírně větší */
+    font-weight:600;
+    letter-spacing:5px;
+
+}
+
+.logo:hover .logo-name{
+
+    color:var(--primary-color);
+
+}
+
+
+
+/*========================================================
+  NAVIGACE
+========================================================*/
+
+.navigation{
+
+    display:flex;
+
+    gap:2.6rem;      /* dřív 2rem – větší rozestupy */
+
+}
+
+
+
+.navigation a{
+
+    position:relative;
+
+    text-decoration:none;
+
+    color:var(--text-muted);
+
+    font-weight:500;
+
+    font-size:1.05rem;   /* mírně větší písmo v menu */
+
+    transition:var(--transition);
+
+}
+
+
+
+.navigation a:hover{
+
+    color:var(--text-color);
+
+}
+
+
+
+/* Malá čárka pod odkazem */
+
+.navigation a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--primary-color);
+
+    transition:var(--transition);
+
+}
+
+
+
+.navigation a:hover::after{
+
+    width:100%;
+
+}
+
+
+
+/* AKTIVNÍ POLOŽKA (aktuální stránka) – trvale zvýrazněná */
+
+.navigation a.active{
+
+    color:var(--text-color);
+
+}
+
+/* trvalé podtržení pod aktivní položkou */
+
+.navigation a.active::after{
+
+    width:100%;
+
+}
+
+
+
+/*========================================================
+  TLAČÍTKA VPRAVO
+========================================================*/
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.75rem;
+
+}
+
+
+
+.language-button,
+.theme-button{
+
+    background:rgba(255,255,255,.03);
+
+    color:var(--text-color);
+
+    border:1px solid var(--border-color);
+
+    border-radius:12px;
+
+    padding:.75rem 1rem;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+
+
+.language-button:hover,
+.theme-button:hover{
+
+    border-color:var(--primary-color);
+
+    color:var(--primary-color);
+
+    transform:translateY(-2px);
+
+}
