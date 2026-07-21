@@ -15,7 +15,7 @@
 
 .hero {
     position: relative;
-    overflow: hidden;
+    overflow: hidden;    /* bylo hidden – paní může přetékat ven */
     min-height: 700px;
     display: flex;
     align-items: stretch;
@@ -144,8 +144,8 @@
 /* …ale samotná plocha videa hover přijímá (kvůli "pssst") */
 .hero-image {
     position: relative;
-    width: 30vw;                     /* velikost paní – tady se mění */
-    max-width: 760px;
+    width: 42vw;                     /* velikost paní – tady se mění */
+    max-width: 900px;
     pointer-events: auto;
 
     display: flex;
@@ -347,8 +347,8 @@
 ========================================================*/
 
 .service-icon {
-    width: 160px;     /* ← velikost ikony (jen tady měň, obě čísla stejná) */
-    height: 160px;
+    width: 82px;     /* bylo 96px – po oříznutí stačí míň */
+    height: 82px;
     flex-shrink: 0;
 
     object-fit: contain;
@@ -363,9 +363,9 @@
 }
 
 @keyframes iconBob {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-6px); }
-}
+        0%, 100% { transform: translateY(3px); }
+        50%      { transform: translateY(-3px); }
+    }
 
 .service-card:nth-child(2) .service-icon { animation-delay: .3s; }
 .service-card:nth-child(3) .service-icon { animation-delay: .6s; }
