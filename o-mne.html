@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+
+    <!-- =========================
+         ZÁKLADNÍ NASTAVENÍ
+    ========================= -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>O mně | Aneta Lorencová</title>
+
+    <meta name="description"
+        content="O mně – Aneta Lorencová, AI Creator, storyteller a tvůrkyně digitálního obsahu.">
+
+    <meta name="author" content="Aneta Lorencová">
+
+    <!-- =========================
+         GOOGLE FONTS
+    ========================= -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+        rel="stylesheet">
+
+    <!-- =========================
+         STYLY
+    ========================= -->
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+         (stejný jako na hlavní stránce, jen "O mně" je aktivní)
+    ========================= -->
+
+    <header class="header">
+
+        <div class="container">
+
+            <!-- Logo – vede zpět na hlavní stránku -->
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-name">
+                    ANETA
+                    <span class="logo-star">✦</span>
+                </span>
+
+                <span class="logo-sub">AI CREATOR</span>
+
+            </a>
+
+            <!-- Navigace -->
+
+            <nav class="navigation">
+
+                <a href="index.html">Domů</a>
+                <a href="projekty.html">Projekty</a>
+                <a href="clanky.html">Články</a>
+                <a href="videa.html">Videa</a>
+                <a href="o-mne.html" class="active">O mně</a>
+                <a href="contact.html">Kontakt</a>
+
+            </nav>
+
+            <!-- Pravá část headeru -->
+
+            <div class="header-right">
+
+                <button class="language-button">
+                    CZ | EN
+                </button>
+
+                <button
+                    class="theme-button"
+                    aria-label="Přepnout barevný režim">
+
+                    🌙
+
+                </button>
+
+                <!-- Ikona menu – viditelná JEN na mobilu (řeší mobile.css) -->
+                <button class="menu-button" aria-label="Menu">
+                    <img src="images/icons/menu.png" alt="Menu">
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- =========================
+         HLAVNÍ OBSAH
+    ========================= -->
+
+    <main>
+
+        <!--======================================================
+            SEKCE: O MNĚ
+            ------------------------------------------------------
+            Struktura:
+              <section class="about">        = celá sekce
+                <div class="about-container">  = mřížka fotka | text
+                  <div class="about-photo">    = fotka vlevo
+                  <div class="about-content">  = text vpravo
+
+            JAK VYMĚNIT FOTKU:
+            Nahraj svůj obrázek do images/about/ a změň
+            src níže. Dokud tam fotka není, ukáže se
+            fialový přechod jako placeholder.
+        =======================================================-->
+
+        <section class="about">
+
+            <div class="container about-container">
+
+                <!-- LEVÁ ČÁST – fotka -->
+
+                <div class="about-photo">
+                    <video autoplay muted loop playsinline
+                           poster="images/about/aneta.jpg">
+                        <source src="images/about/aneta.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- PRAVÁ ČÁST – text -->
+
+                <div class="about-content">
+
+                    <span class="section-label">✦ O mně</span>
+
+                    <h2 class="section-title">Kdo jsem?</h2>
+
+                    <p class="about-subtitle">
+                        A kde končí hranice technologií
+                        <br>
+                        a přichází fantazie?
+                    </p>
+
+                    <p>
+                        Každý nový projekt je pro mě 
+                        příležitostí zjistit, <br>co všechno je s AI možné dokázat. <br>
+
+Umělá inteligence mi otevřela úplně nový svět možností. 
+Začalo to zvědavostí a otázkou „Co všechno to vlastně umí?“ <br>
+Dnes pomocí AI tvořím obrázky, videa, texty i webové projekty a pořád objevuju 
+nové cesty, jak technologie smysluplně a kreativně využít.
+                    </p>
+
+                    <p>
+                        Nemyslím si, že AI nahrazuje lidskou tvořivost.
+                         Naopak! Vnímám ji jako nástroj, který dokáže dobrý 
+                         nápad posunout o krok dál <br>a vdechnout mu život.
+                    </p>
+
+                    <p>
+                        A právě hledání těch možností je to, co mě na AI baví nejvíc.
+                    </p>
+
+                   <a href="contact.html" class="btn btn-primary">
+    Napište mi
+    <span>→</span>
+</a>
+
+                </div>
+
+                <!-- PRAVÁ ČÁST – CO UMÍM -->
+
+                <div class="about-skills">
+
+                    <h3 class="skills-title">Co umím?</h3>
+
+                    <ul class="skills-list">
+
+                        <li>
+                            <a href="sluzby.html#weby">
+                                <img src="images/icons/web.png" alt="">
+                                <span>Weby</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="sluzby.html#grafika">
+                                <img src="images/icons/image.png" alt="">
+                                <span>Grafika</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="sluzby.html#video">
+                                <img src="images/icons/video.png" alt="">
+                                <span>Video</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="sluzby.html#obsah">
+                                <img src="images/icons/text.png" alt="">
+                                <span>Obsah</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="sluzby.html#ai-reseni">
+                                <img src="images/icons/AI brain.png" alt="">
+                                <span>AI řešení</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

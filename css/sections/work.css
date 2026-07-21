@@ -48,7 +48,7 @@
 /* zrušíme spodní mezeru u nadpisu uvnitř hlavičky,
    ať tlačítko sedí přesně na jeho úrovni */
 .work-head .section-title{
-
+font-size: 2.5rem;
     margin-bottom:0;
 
 }
@@ -80,7 +80,6 @@
     border-radius:14px;
 
     transition:var(--transition);
-
 }
 
 .btn-ghost:hover{

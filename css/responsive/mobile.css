@@ -9,7 +9,10 @@
 ========================================================*/
 
 @media (max-width: 640px) {
-
+.btn {
+        padding: 10px 16px !important;
+        font-size: clamp(0.8rem, 3.2vw, 0.95rem) !important;
+    }
     /* ==========================
        HEADER – logo + ikona menu vpravo nahoře
     ========================== */
@@ -42,7 +45,7 @@
 .header-right {
         position: absolute;
         top: 50%;
-        right: -7%;
+        right: -6%;
         transform: translateY(-50%);
 
         width: clamp(40px, 12vw, 64px);
@@ -75,6 +78,8 @@
 
     .logo {
         margin-top: 5px;
+        margin-top: 5px;
+        margin-left: -10px;    /* ← posune ANETA doleva */
     }
     /* posune ANETA trochu dolů */
 
@@ -223,7 +228,7 @@
     ========================== */
 
     .hero-buttons {
-        margin-top: 2rem;
+        margin-top: 1rem;
         padding-top: 0;
     }
 

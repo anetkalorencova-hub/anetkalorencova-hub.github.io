@@ -244,3 +244,7 @@
     transform:translateY(-2px);
 
 }
+
+.menu-button {
+    display: none;
+}

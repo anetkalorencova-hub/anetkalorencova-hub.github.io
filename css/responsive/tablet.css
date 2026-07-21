@@ -1,0 +1,222 @@
+/*========================================================
+  TABLET STYLY
+--------------------------------------------------------
+  Platí pro šířky 641px – 1024px (mezi telefonem a desktopem).
+  VŠECHNO je uvnitř @media, takže to neovlivní
+  ani mobil (do 640px), ani desktop (nad 1024px).
+
+  DŮLEŽITÉ: nová pravidla piš DOVNITŘ složené závorky
+  @media { ... }, NIKDY za ni.
+========================================================*/
+
+@media (min-width: 641px) and (max-width: 1024px) {
+
+    /* ==========================
+       HEADER
+    ========================== */
+
+    .container {
+        width: 92%;
+    }
+
+    /* nižší header než na desktopu */
+    .header .container {
+        min-height: 90px !important;
+    }
+
+    .logo-name {
+        font-size: 1.9rem;
+        letter-spacing: 5px;
+    }
+
+    .logo-sub {
+        font-size: .7rem;
+        letter-spacing: 4px;
+    }
+
+    /* menší rozestupy v navigaci, ať se vejde */
+    .navigation {
+        gap: 1.4rem;
+    }
+
+    .navigation a {
+        font-size: .95rem;
+    }
+
+    /* ikona menu na tabletu nepotřebujeme (navigace se vejde) */
+    .menu-button {
+        display: none;
+    }
+
+
+    /* ==========================
+       HERO – dva sloupce (text | ikony), paní v pozadí
+    ========================== */
+
+    .hero {
+        min-height: auto;
+        padding: 3rem 0;
+        overflow: hidden;
+    }
+
+    /* dva sloupce místo tří – prostřední prázdný sloupec zrušíme */
+    .hero-container {
+        display: grid;
+        grid-template-columns: 1fr minmax(220px, 280px);
+        gap: 2rem;
+        align-items: center;
+        position: relative;
+    }
+
+    /* prázdný prostřední sloupec na tabletu nepotřebujeme */
+    .hero-center {
+        display: none;
+    }
+
+    /* ---------- TEXT ---------- */
+
+    .hero-content {
+        position: relative;
+        z-index: 10;
+        height: auto;
+    }
+
+    .hero h1 {
+        font-size: clamp(1.9rem, 4.2vw, 2.6rem) !important;
+    }
+
+    .hero-tag {
+        font-size: clamp(.7rem, 1.6vw, .9rem) !important;
+        white-space: normal !important;
+    }
+
+    .hero p {
+        font-size: clamp(.9rem, 1.8vw, 1.05rem) !important;
+        max-width: 100%;
+    }
+
+    /* jemné zatmavení pod textem, ať je čitelný přes paní */
+    .hero-content::before {
+        content: "";
+        position: absolute;
+        inset: -20px;
+
+        background: linear-gradient(
+            90deg,
+            rgba(8, 8, 12, .90) 0%,
+            rgba(8, 8, 12, .72) 50%,
+            rgba(8, 8, 12, .30) 85%,
+            transparent 100%
+        );
+
+        border-radius: 24px;
+        z-index: -1;
+    }
+
+    /* ---------- PANÍ (pozadí) ---------- */
+
+    .hero-visual {
+        position: absolute;
+        left: 50%;
+        right: auto;
+        top: 50%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .hero-image {
+        width: clamp(300px, 45vw, 460px) !important;
+        max-width: clamp(300px, 45vw, 460px) !important;
+    }
+
+
+    /* ==========================
+       IKONY SLUŽEB – vpravo pod sebe, s texty
+    ========================== */
+
+    .hero-services {
+        position: relative;
+        z-index: 10;
+
+        display: flex;
+        flex-direction: column;
+        gap: .8rem;
+
+        margin-left: auto;
+        width: auto;
+    }
+
+    .service-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        /* menší místo pro ikonu než na desktopu */
+        padding: .6rem .4rem .6rem 80px;
+        min-height: 80px;
+    }
+
+    /* texty u ikon na tabletu ZŮSTÁVAJÍ (je na ně místo) */
+    .service-card h3 {
+        display: block;
+        font-size: .95rem;
+    }
+
+    .service-card p {
+        display: block;
+        font-size: .82rem;
+        line-height: 1.4;
+    }
+
+    /* ikona vlevo jako samostatná vrstva */
+    .service-icon-wrap {
+        position: absolute;
+        left: 6px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .service-icon {
+        width: 56px;
+        height: 56px;
+        flex-shrink: 0;
+    }
+
+
+    /* ==========================
+       TLAČÍTKA
+    ========================== */
+
+    .hero-buttons {
+        margin-top: 1.5rem;
+        gap: 14px;
+    }
+
+    .btn {
+        padding: 11px 18px !important;
+        font-size: clamp(.85rem, 1.7vw, .95rem) !important;
+    }
+
+
+    /* ==========================
+       PROJEKTY – 2 karty vedle sebe
+    ========================== */
+
+    .work {
+        padding: 4rem 0;
+    }
+
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 2.4rem;
+    }
+
+}

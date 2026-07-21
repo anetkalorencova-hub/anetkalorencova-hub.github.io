@@ -1,0 +1,281 @@
+/*========================================================
+  SEKCE: O MNĚ
+--------------------------------------------------------
+  Obsahuje:
+    1) .about            – celá sekce (odsazení shora/zdola)
+    2) .about-container  – mřížka: fotka | text
+    3) .about-photo      – fotka vlevo
+    4) .about-content    – text vpravo + tlačítko
+    5) RESPONZIVITA      – na užších obrazovkách pod sebe
+========================================================*/
+
+
+/*========================================================
+  1) CELÁ SEKCE
+--------------------------------------------------------
+  padding = mezera nahoře a dole.
+========================================================*/
+
+.about {
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* jemná fialová záře v pozadí (jako v hero) */
+.about::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    top: -200px;
+    left: -200px;
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(124, 58, 237, .18),
+        transparent 70%
+    );
+
+    filter: blur(80px);
+    z-index: 0;
+}
+
+
+/*========================================================
+  2) MŘÍŽKA – fotka vlevo, text vpravo
+========================================================*/
+
+.about-container {
+    display: grid;
+    grid-template-columns: minmax(240px, 260px) 20fr minmax(200px, 260px);
+    gap: 4rem;
+    align-items: start;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/*========================================================
+  3) FOTKA
+--------------------------------------------------------
+  aspect-ratio drží poměr stran, ať je fotka jakákoliv.
+  Chceš jiný tvar? Změň 3 / 4 (na výšku),
+  1 / 1 (čtverec), 4 / 3 (na šířku).
+========================================================*/
+
+.about-photo {
+    position: relative;
+
+    border-radius: var(--border-radius);
+    overflow: hidden;
+
+    aspect-ratio: 3 / 4;
+
+    /* jemná záře a stín kolem fotky */
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, .45),
+        0 0 40px rgba(124, 58, 237, .18);
+
+    /* placeholder, dokud tam fotka není */
+    background: linear-gradient(
+        135deg,
+        rgba(124, 58, 237, .30),
+        rgba(0, 212, 255, .15)
+    );
+}
+
+.about-photo img,
+.about-photo video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+
+}
+
+.about-photo:hover img,
+.about-photo:hover video {
+    transform: scale(1.04);
+}
+
+
+
+
+/*========================================================
+  4) TEXT VPRAVO
+========================================================*/
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-content p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.9;
+
+    margin-bottom: 1.2rem;
+    max-width: 560px;
+}
+
+/* hlavní nadpis – menší než výchozí section-title */
+.about .section-title {
+    font-size: 2rem;
+    margin-bottom: .8rem;
+}
+
+/* podnadpis pod nadpisem – v akcentové barvě */
+.about-content .about-subtitle {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.4;
+
+    margin-bottom: 2rem;
+}
+
+/* tlačítko odsadit od textu a nechat ho vlevo */
+.about-content .btn {
+    align-self: flex-end;
+    margin-top: 1rem;
+     margin-right: 13rem;   /* vyšší číslo = víc doleva */
+}
+
+
+/*========================================================
+  SEZNAM "CO UMÍM"
+========================================================*/
+
+.skills-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.skills-list li {
+    list-style: none;
+}
+
+.skills-list a {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 400;
+
+    transition: color .3s ease, transform .3s ease;
+}
+
+.skills-list a:hover {
+    color: var(--accent-color);
+    transform: translateX(6px);
+}
+
+.skills-list img {
+    width: 62px;
+    height: 62px;
+    flex-shrink: 0;
+}
+
+/* nadpis nad seznamem */
+.skills-title {
+    font-size: 1.7rem;
+    margin-bottom: 1.6rem;
+}
+
+/*========================================================
+  5) RESPONZIVITA
+--------------------------------------------------------
+  Na užších obrazovkách se fotka a text složí pod sebe.
+========================================================*/
+
+/* TABLET a menší desktop */
+@media (max-width: 1024px) {
+
+    .about {
+        padding: 4rem 0;
+    }
+
+    .about-container {
+        grid-template-columns: minmax(240px, 340px) 1fr;
+        gap: 2.5rem;
+    }
+
+    .about-content p {
+        font-size: .98rem;
+        line-height: 1.8;
+    }
+
+}
+
+/* MOBIL – fotka nahoře, text pod ní */
+@media (max-width: 640px) {
+
+    .about {
+        padding: 2.5rem 0;
+    }
+
+    .about-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    /* fotka menší, ať nezabírá celou obrazovku */
+    .about-photo {
+        width: 100%;
+        max-width: 320px;
+        margin-inline: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .about-content p {
+        font-size: clamp(.9rem, 3.6vw, 1.05rem);
+        line-height: 1.8;
+        max-width: 100%;
+    }
+.about-content .btn {
+        align-self: stretch;
+        text-align: center;
+        justify-content: center;
+        margin-right: 0;   /* zruší odsazení z desktopu */
+    }
+
+}
+
+@media (max-width: 640px) {
+
+    .skills-list {
+        gap: 1.1rem;
+        align-items: flex-start;   /* položky k levému kraji */
+        text-align: left;
+    }
+
+    .skills-list img {
+        width: 44px;
+        height: 44px;
+    }
+
+    .skills-title {
+        text-align: left;
+    }
+
+    .about-skills {
+        width: 100%;
+        margin-inline: 0;   /* zruší případné vycentrování */
+        align-self: flex-start;
+    }
+}
+
