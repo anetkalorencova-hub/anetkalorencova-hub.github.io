@@ -73,12 +73,11 @@
         font-size: .65rem;
         letter-spacing: 3px;
     }
-.logo {
-        .logo{
-    margin-top: 5px;
-}
-   /* posune ANETA trochu dolů */
+
+    .logo {
+        margin-top: 5px;
     }
+    /* posune ANETA trochu dolů */
 
     /* ==========================
        HERO – vše pod sebe, přilepené k záhlaví
@@ -129,11 +128,12 @@
 
     /* ---------- PANÍ (pozadí) ---------- */
 
-    .hero-visual {
+     .hero-visual {
         position: absolute;
-        right: -120px;
+        right: -50%;
         left: auto;
-        top: 50%;
+        top: auto;          /* zrušíme kotvení shora */
+        bottom: 10%;      /* místo 0 – 10 % od spodního okraje */
         transform: none;
         margin: 0;
         z-index: 1;
@@ -141,11 +141,9 @@
     }
 
   .hero-image {
-    ...
-    width: 30vw;         /* ← velikost paní (procento šířky okna) */
-    max-width: 760px;    /* ← strop, přes který nepřeroste */
-    ...
-}
+        width: clamp(260px, 78vw, 340px) !important;
+        max-width: clamp(260px, 78vw, 340px) !important;
+    }
 
     /* ==========================
        IKONY SLUŽEB – řada vedle sebe, BEZ textů
@@ -220,6 +218,4 @@
 
     /* ==========================
        PROJECTS / další sekce – zatím beze změny
-    ========================== */
-
-}
+    ==========================
