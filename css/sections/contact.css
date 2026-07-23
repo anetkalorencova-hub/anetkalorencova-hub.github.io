@@ -89,18 +89,21 @@
 ========================================================*/
 
 .contact-container {
-
     display: grid;
+    grid-template-columns: 520px minmax(0, 1fr) minmax(320px, 360px);
+    gap: 3rem;
 
-    grid-template-columns: 1fr minmax(340px, 480px);
-
-    gap: 5rem;
-
-    align-items: center;
+    align-items: start;
+    height: auto;
 
     position: relative;
     z-index: 2;
+}
 
+.contact-form {
+    grid-column: 3;
+    margin-right: 0;
+    margin-top: 0;
 }
 
 
@@ -114,6 +117,12 @@
 
     flex-direction: column;
 
+}
+
+.contact .section-title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
 }
 
 .contact-content p {
@@ -148,7 +157,7 @@
     align-items: center;
     gap: 1.1rem;
 
-    padding: 1rem 1.2rem;
+    padding: .85rem 1.2rem;
     border-radius: 16px;
 
     background: rgba(255, 255, 255, .03);
@@ -176,8 +185,8 @@
 }
 
 .contact-item img {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     flex-shrink: 0;
 }
 
@@ -186,13 +195,6 @@
     flex-direction: column;
     gap: .2rem;
     min-width: 0;
-}
-
-.contact-text span {
-    color: var(--accent-color);
-    font-size: .78rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
 }
 
 .contact-text strong {
@@ -206,132 +208,235 @@
 ========================================================*/
 
 .contact-form {
+    position: relative;
 
-    padding: 2rem;
+     padding: 2.4rem 2rem;
+    border-radius: 32px;
 
-    border-radius: 24px;
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid rgba(124, 58, 237, .22);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
 
-    background: rgba(255,255,255,.04);
+    /* trvalá fialová záře */
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, .28),
+        0 0 60px rgba(124, 58, 237, .28);
 
-    border: 1px solid rgba(255,255,255,.08);
+    transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease;
+}
 
-    backdrop-filter: blur(16px);
+.contact-form:hover {
+    transform: scale(1.02);
+    border-color: rgba(168, 85, 247, .40);
 
     box-shadow:
-
-        0 20px 50px rgba(0,0,0,.35),
-
-        0 0 35px rgba(124,58,237,.12);
-
+        0 30px 70px rgba(0, 0, 0, .32),
+        0 0 90px rgba(124, 58, 237, .45);
 }
 
 .contact-form form {
-
     display: flex;
-
     flex-direction: column;
-
-    gap: 1.2rem;
-
+    gap: 1.3rem;
 }
 
 .contact-form input,
 .contact-form textarea {
+    padding: 1.1rem 1.3rem;
+    font-size: 1rem;
+    border-radius: 18px;
 
-    width: 100%;
-
-    padding: 1rem 1.1rem;
-
-    border-radius: 14px;
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    background: rgba(255,255,255,.03);
-
+    border: 1px solid rgba(255, 255, 255, .08);
+    background: rgba(255, 255, 255, .03);
     color: var(--text-color);
 
     font-family: inherit;
-
     font-size: 1rem;
 
-    transition: .3s;
+    transition: border-color .3s ease, background .3s ease, box-shadow .3s ease;
+}
 
+.contact-form input:hover,
+.contact-form textarea:hover {
+    border-color: rgba(255, 255, 255, .16);
+    background: rgba(255, 255, 255, .05);
 }
 
 .contact-form textarea {
-
     resize: vertical;
-
-    min-height: 180px;
-
+    min-height: 130px;
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-
-    color: rgba(255,255,255,.45);
-
+    color: rgba(255, 255, 255, .45);
 }
 
+/* FOCUS – fialová záře kolem pole */
 .contact-form input:focus,
 .contact-form textarea:focus {
-
     outline: none;
+    border-color: var(--primary-light);
+    background: rgba(124, 58, 237, .06);
 
-    border-color: var(--primary-color);
-
-    box-shadow: 0 0 25px rgba(124,58,237,.18);
-
+    box-shadow:
+        0 0 0 3px rgba(124, 58, 237, .18),
+        0 0 30px rgba(124, 58, 237, .30);
 }
 
 
 /*========================================================
-  5) RESPONZIVITA
---------------------------------------------------------
-  Tablet
+  TLAČÍTKO FORMULÁŘE
 ========================================================*/
 
-@media (max-width: 1024px) {
+.contact-form .btn {
+    width: 100%;
+    justify-content: center;
 
-    .contact {
+    margin-top: .6rem;
+    padding: 1.25rem 2rem;
 
-        padding: 4rem 0;
+    border-radius: 18px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    letter-spacing: .3px;
 
-    }
+    cursor: pointer;
+
+    transition: transform .3s ease, box-shadow .3s ease, filter .3s ease;
+}
+
+.contact-form .btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 14px 34px rgba(124, 58, 237, .35),
+        0 0 45px rgba(124, 58, 237, .28);
+}
+
+/* glow po kliknutí */
+.contact-form .btn:active {
+    transform: translateY(-1px) scale(.985);
+
+    box-shadow:
+        0 0 0 4px rgba(168, 85, 247, .22),
+        0 0 60px rgba(168, 85, 247, .45);
+}
+
+.contact-form .btn span {
+    display: inline-block;
+    transition: transform .3s ease;
+}
+
+.contact-form .btn:hover span {
+    transform: translateX(5px);
+}
+
+
+/*========================================================
+  POLETUJÍCÍ MOTÝLEK
+========================================================*/
+
+.butterfly {
+    position: absolute;
+    z-index: 1;
+
+    /* uprostřed sekce */
+    top: 52%;
+    left: 62%;
+    translate: -50% -50%;
+
+    width: 1600px;
+    opacity: .5;
+    pointer-events: none;
+
+    animation: breathe 4s ease-in-out infinite;
+}
+
+
+
+/*========================================================
+  5) RESPONZIVITA
+========================================================*/
+
+/* MENŠÍ DESKTOP (1025–1400px) */
+
+@media (max-width: 1400px) and (min-width: 1025px) {
 
     .contact-container {
-
-        grid-template-columns: 1fr;
-
-        gap: 3rem;
-
+        grid-template-columns: minmax(0, 1fr) 2rem minmax(300px, 340px);
+        gap: 2rem;
     }
 
-    .contact-content {
+    .butterfly {
+        top: 80%;
+        left: 60%;
+        right: auto;
+        translate: -50% -50%;
 
-        text-align: center;
-
-        align-items: center;
-
-    }
-
-    .contact-content p {
-
-        max-width: 700px;
-
-    }
-
-    .contact-info {
-
-        width: 100%;
-
-        max-width: 500px;
-
+        width: 600px;
+        opacity: .35;
     }
 
 }
 
+/* TABLET (641–1024px) – dva sloupce vedle sebe */
 
+@media (max-width: 1024px) and (min-width: 641px) {
+
+    .contact {
+        padding: 4rem 0;
+    }
+
+    .contact-container {
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+        gap: 2rem;
+
+        align-items: end;        /* oba sloupce chycené dole */
+    }
+
+    .contact-content {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .contact .section-title {
+        font-size: 1.9rem;
+    }
+
+    .contact-content p {
+        max-width: 100%;
+    }
+
+    .contact-info {
+        width: 100%;
+        max-width: none;
+    }
+
+    .contact-form {
+        grid-column: 2;
+        width: 100%;
+        max-width: none;
+        padding: 1.7rem 1.4rem;
+
+        align-self: start;
+        margin-top: 10rem;    /* kolik chceš */
+    }
+
+    /* motýlek nad formulářem */
+    .butterfly {
+        top: 0rem;
+        right: -10%;
+        left: auto;
+        translate: 0 0;
+
+        width: clamp(200px, 26vw, 260px);
+        opacity: .35;
+    }
+
+}
 /*========================================================
   MOBIL
 --------------------------------------------------------
@@ -341,67 +446,40 @@
 @media (max-width: 640px) {
 
     .contact {
-
         padding: 2.5rem 0;
-
     }
 
     .contact-container {
-
         display: flex;
-
         flex-direction: column;
-
         gap: 2rem;
-
     }
 
     .contact-content {
-
         align-items: flex-start;
-
         text-align: left;
-
     }
 
     .contact-content p {
-
         font-size: clamp(.9rem, 3.6vw, 1.05rem);
-
         line-height: 1.8;
-
         max-width: 100%;
-
     }
 
-    .contact-form {
+    /* KONTAKTNÍ POLOŽKY */
 
-        width: 100%;
-
-        padding: 1.5rem;
-
+    .contact-info {
+        max-width: 100%;
+        gap: .8rem;
     }
-
-    .contact-form input,
-    .contact-form textarea {
-
-        font-size: .95rem;
-
-    }
-
-    .contact-form textarea {
-
-        min-height: 150px;
-
-    }
-
-}
-
-@media (max-width: 640px) {
 
     .contact-item {
         padding: .9rem 1rem;
         gap: .9rem;
+    }
+
+    .contact-item:hover {
+        transform: none;
     }
 
     .contact-item img {
@@ -412,4 +490,44 @@
     .contact-text strong {
         font-size: .92rem;
     }
+
+    /* FORMULÁŘ */
+
+    .contact-form {
+        width: 100%;
+        padding: 1.6rem;
+        border-radius: 24px;
+    }
+
+    .contact-form:hover {
+        transform: none;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: .95rem;
+        padding: 1rem 1.1rem;
+    }
+
+    .contact-form textarea {
+        min-height: 150px;
+    }
+
+    .contact-form .btn {
+        padding: 1.1rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .butterfly {
+        display: block;
+        position: static;
+
+        align-self: flex-end;
+        margin: -6rem -55% -4rem 0;
+
+        width: 250px;
+        opacity: .4;
+        translate: 0 0;
+    }
 }
+

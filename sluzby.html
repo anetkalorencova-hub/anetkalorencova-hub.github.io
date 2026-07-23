@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+
+    <!-- =========================
+         ZÁKLADNÍ NASTAVENÍ
+    ========================= -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Služby | Aneta Lorencová</title>
+
+    <meta name="description"
+        content="Služby – weby, grafika, video, obsah a AI řešení. Aneta Lorencová, AI Creator.">
+
+    <meta name="author" content="Aneta Lorencová">
+
+    <!-- =========================
+         GOOGLE FONTS
+    ========================= -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+        rel="stylesheet">
+
+    <!-- =========================
+         STYLY
+    ========================= -->
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+         (stejný jako všude, "O mně" tu není aktivní –
+          Služby zatím nemají vlastní položku v menu)
+    ========================= -->
+
+    <header class="header">
+
+        <div class="container">
+
+            <!-- Logo – vede zpět na hlavní stránku -->
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-name">
+                    ANETA
+                    <span class="logo-star">✦</span>
+                </span>
+
+                <span class="logo-sub">AI CREATOR</span>
+
+            </a>
+
+            <!-- Navigace -->
+
+            <nav class="navigation">
+
+                <a href="index.html">Domů</a>
+                <a href="projekty.html">Projekty</a>
+                <a href="clanky.html">Články</a>
+                <a href="videa.html">Videa</a>
+                <a href="o-mne.html">O mně</a>
+                <a href="contact.html">Kontakt</a>
+
+            </nav>
+
+            <!-- Pravá část headeru -->
+
+            <div class="header-right">
+
+                <button class="language-button">
+                    CZ | EN
+                </button>
+
+                <button
+                    class="theme-button"
+                    aria-label="Přepnout barevný režim">
+
+                    🌙
+
+                </button>
+
+                <!-- Ikona menu – viditelná JEN na mobilu (řeší mobile.css) -->
+                <button class="menu-button" aria-label="Menu">
+                    <img src="images/icons/menu.png" alt="Menu">
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- =========================
+         HLAVNÍ OBSAH
+    ========================= -->
+
+    <main>
+
+        <!--======================================================
+            ÚVOD STRÁNKY
+            ------------------------------------------------------
+            Krátký nadpis + věta. Pod tím "rychlé odkazy" –
+            skleněné karty, které skočí na konkrétní sekci níže.
+
+            JAK PŘIDAT SLUŽBU:
+            1) přidej kartu do .services-nav
+            2) přidej celý blok <section class="service"> níže
+            3) id musí souhlasit s href (#weby → id="weby")
+        =======================================================-->
+
+        <section class="services-intro">
+
+            <!-- POZADÍ – video s motýlem -->
+
+            <video class="services-bg" autoplay muted loop playsinline
+                   poster="images/services/hand-butterflay.jpg">
+                <source src="images/services/hand-butterflay.mp4" type="video/mp4">
+            </video>
+
+            <div class="container">
+
+        <div class="services-intro-text">
+
+            <span class="section-label">✦ Služby</span>
+
+            <h1 class="section-title">Co společně vytvoříme</h1>
+
+            <p class="services-lead">
+                Od nápadu k hotovému výstupu.
+                <br>
+                Vyberte si oblast, která vás zajímá.
+            </p>
+
+        </div>
+
+    </div>
+
+            <!--==================================================
+                RYCHLÉ ODKAZY (skleněné karty)
+                Přes celou šířku pod videem a textem.
+            ===================================================-->
+
+            <div class="container">
+
+                <nav class="services-nav" aria-label="Přehled služeb">
+
+                    <a href="#weby" class="service-chip">
+                        <img src="images/icons/web.png" alt="">
+                        <span class="chip-title">Weby</span>
+                        <span class="chip-text">Osobní i firemní stránky na míru</span>
+                    </a>
+
+                    <a href="#grafika" class="service-chip">
+                        <img src="images/icons/image.png" alt="">
+                        <span class="chip-title">Grafika</span>
+                        <span class="chip-text">Vizuály, ilustrace, úpravy fotek</span>
+                    </a>
+
+                    <a href="#video" class="service-chip">
+                        <img src="images/icons/video.png" alt="">
+                        <span class="chip-title">Video</span>
+                        <span class="chip-text">AI videa, střih, voiceover</span>
+                    </a>
+
+                    <a href="#obsah" class="service-chip">
+                        <img src="images/icons/text.png" alt="">
+                        <span class="chip-title">Obsah</span>
+                        <span class="chip-text">Články, texty na web, copywriting</span>
+                    </a>
+
+                    <a href="#ai-reseni" class="service-chip">
+                        <img src="images/icons/AI brain.png" alt="">
+                        <span class="chip-title">AI řešení</span>
+                        <span class="chip-text">Prompty, workflow, automatizace</span>
+                    </a>
+
+                </nav>
+
+            </div>
+
+        </section>
+
+        <!--======================================================
+            SEKCE: WEBY
+            ------------------------------------------------------
+            Každá sekce má stejnou kostru:
+              .service-header  = ikona + nadpis + popis
+              .service-grid    = 3 skleněné panely
+                                 (co vytvořím / nástroje / průběh)
+              .service-samples = ukázky projektů
+        =======================================================-->
+
+        <section class="service" id="weby">
+
+            <div class="container">
+
+                <div class="service-header">
+
+                    <img src="images/icons/web.png" alt="" class="service-header-icon">
+
+                    <div>
+                        <h2 class="service-title">Weby</h2>
+                        <p class="service-desc">
+                            Přehledné stránky, které fungují na mobilu i na
+                            velké obrazovce a dají se snadno rozšiřovat.
+                            Kód píšu ručně, AI používám tam, kde ušetří čas.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="service-grid">
+
+                    <!-- PANEL 1 – co vytvořím -->
+                    <article class="service-panel">
+
+                        <h3>Co pro vás vytvořím</h3>
+
+                        <ul class="panel-list">
+                            <li>Osobní portfolio nebo web pro malou firmu</li>
+                            <li>Jednostránkovou prezentaci projektu</li>
+                            <li>Landing page pro kampaň nebo produkt</li>
+                            <li>Úpravy a rozšíření existujícího webu</li>
+                        </ul>
+
+                    </article>
+
+                    <!-- PANEL 2 – nástroje -->
+                    <article class="service-panel">
+
+                        <h3>S čím pracuji</h3>
+
+                        <ul class="panel-tags">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Figma</li>
+                            <li>Claude</li>
+                            <li>ChatGPT</li>
+                        </ul>
+
+                    </article>
+
+                    <!-- PANEL 3 – průběh spolupráce -->
+                    <article class="service-panel">
+
+                        <h3>Jak to probíhá</h3>
+
+                        <ol class="panel-steps">
+                            <li>Projdeme, co web má umět a pro koho je</li>
+                            <li>Připravím návrh vzhledu a struktury</li>
+                            <li>Napíšu kód a doplním obsah</li>
+                            <li>Otestujeme, doladíme, spustíme</li>
+                        </ol>
+
+                    </article>
+
+                </div>
+
+                <!--==================================================
+                    UKÁZKY PROJEKTŮ
+                    Obrázky doplň do images/projects/.
+                    Kartu přidáš zkopírováním celého <a>.
+                ===================================================-->
+
+                <div class="service-samples">
+
+                    <h3 class="samples-title">Ukázky</h3>
+
+                    <div class="samples-grid">
+
+                        <a href="projekty.html" class="sample-card">
+                            <img src="images/projects/experiments.jpg" alt="">
+                            <span class="sample-name">Toto portfolio</span>
+                        </a>
+
+                        <a href="projekty.html" class="sample-card">
+                            <img src="images/projects/kuks.jpg" alt="">
+                            <span class="sample-name">Kuks 1726</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!--======================================================
+            SEKCE: GRAFIKA
+        =======================================================-->
+
+        <section class="service" id="grafika">
+
+            <div class="container">
+
+                <div class="service-header">
+
+                    <img src="images/icons/image.png" alt="" class="service-header-icon">
+
+                    <div>
+                        <h2 class="service-title">Grafika</h2>
+                        <p class="service-desc">
+                            Vizuály, které mají vlastní rukopis – ne první
+                            výsledek z generátoru. Každý obrázek prochází
+                            výběrem, úpravou a doladěním.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="service-grid">
+
+                    <article class="service-panel">
+
+                        <h3>Co pro vás vytvořím</h3>
+
+                        <ul class="panel-list">
+                            <li>Obrázky na sociální sítě a do článků</li>
+                            <li>Ilustrace k příběhům a projektům</li>
+                            <li>Vizuály pro web – hero, karty, ikony</li>
+                            <li>Úpravy a retuše existujících fotek</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="service-panel">
+
+                        <h3>S čím pracuji</h3>
+
+                        <ul class="panel-tags">
+                            <li>Midjourney</li>
+                            <li>Leonardo AI</li>
+                            <li>Flux</li>
+                            <li>Photoshop</li>
+                            <li>Canva</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="service-panel">
+
+                        <h3>Jak to probíhá</h3>
+
+                        <ol class="panel-steps">
+                            <li>Řekneme si náladu, barvy a styl</li>
+                            <li>Připravím první sadu návrhů</li>
+                            <li>Vyberete směr, který sedí</li>
+                            <li>Doladím detaily a dodám finální soubory</li>
+                        </ol>
+
+                    </article>
+
+                </div>
+
+                <div class="service-samples">
+
+                    <h3 class="samples-title">Ukázky</h3>
+
+                    <div class="samples-grid">
+
+                        <a href="projekty.html" class="sample-card">
+                            <img src="images/projects/kuks.jpg" alt="">
+                            <span class="sample-name">Historické rekonstrukce</span>
+                        </a>
+
+                        <a href="projekty.html" class="sample-card">
+                            <img src="images/projects/voices.jpg" alt="">
+                            <span class="sample-name">Voices from the Void</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!--======================================================
+            SEKCE: VIDEO
+        =======================================================-->
+
+        <section class="service" id="video">
+
+            <div class="container">
+
+                <div class="service-header">
+
+                    <img src="images/icons/video.png" alt="" class="service-header-icon">
+
+                    <div>
+                        <h2 class="service-title">Video</h2>
+                        <p class="service-desc">
+                            Krátká videa, která udrží pozornost – od nápadu
+                            přes scénář a obraz až po hlas a hudbu.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="service-grid">
+
+                    <article class="service-panel">
+
+                        <h3>Co pro vás vytvořím</h3>
+
+                        <ul class="panel-list">
+                            <li>Krátká videa na sociální sítě</li>
+                            <li>Atmosférická videa pro web</li>
+                            <li>Vyprávěné příběhy s AI hlasem</li>
+                            <li>Střih a titulky k vašemu materiálu</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="service-panel">
+
+                        <h3>S čím pracuji</h3>
+
+                        <ul class="panel-tags">
+                            <li>Runway</li>
+                            <li>Kling</li>
+                            <li>Sora</li>
+                            <li>ElevenLabs</li>
+                            <li>CapCut</li>
+                            <li>Suno</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="service-panel">
+
+                        <h3>Jak to probíhá</h3>
+
+                        <ol class="panel-steps">
+                            <li>Ujasníme si téma, délku a kam video půjde</li>
+                            <li>Napíšu scénář a rozkreslím scény</li>
+                            <li>Vygeneruji obraz, hlas a hudbu</li>
+                            <li>Sestříhám a dodám hotové video</li>
+                        </ol>
+
+                    </article>
+
+                </div>
+
+                <div class="service-samples">
+
+                    <h3 class="samples-title">Ukázky</h3>
+
+                    <div class="samples-grid">
+
+                        <a href="videa.html" class="sample-card">
+                            <img src="images/projects/voices.jpg" alt="">
+                            <span class="sample-name">Voices from the Void</span>
+                        </a>
+
+                        <a href="videa.html" class="sample-card">
+                            <img src="images/projects/experiments.jpg" alt="">
+                            <span class="sample-name">Experimenty &amp; testy</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!--======================================================
+            SEKCE: OBSAH
+        =======================================================-->
+
+        <section class="service" id="obsah">
+
+            <div class="container">
+
+                <div class="service-header">
+
+                    <img src="images/icons/text.png" alt="" class="service-header-icon">
+
+                    <div>
+                        <h2 class="service-title">Obsah</h2>
+                        <p class="service-desc">
+                            Texty, které se dají číst až do konce. Píšu
+                            česky, srozumitelně a bez balastu – i když
+                            první verzi rozepíše AI, výsledek je vždycky můj.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="service-grid">
+
+                    <article class="service-panel">
+
+                        <h3>Co pro vás vytvořím</h3>
+
+                        <ul class="panel-list">
+                            <li>Články a blogové příspěvky</li>
+                            <li>Texty na web – o nás, služby, produkty</li>
+                            <li>Popisky a scénáře pro sociální sítě</li>
+                            <li>Korekturu a přepis stávajících textů</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="service-panel">
+
+                        <h3>S čím pracuji</h3>
+
+                        <ul class="panel-tags">
+                            <li>Claude</li>
+                            <li>ChatGPT</li>
+                            <li>Perplexity</li>
+                            <li>Notion</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="service-panel">
+
+                        <h3>Jak to probíhá</h3>
+
+                        <ol class="panel-steps">
+                            <li>Řekneme si téma, tón a pro koho píšeme</li>
+                            <li>Připravím osnovu ke schválení</li>
+                            <li>Napíšu text a projdu fakta</li>
+                            <li>Zapracuju vaše připomínky</li>
+                        </ol>
+
+                    </article>
+
+                </div>
+
+                <div class="service-samples">
+
+                    <h3 class="samples-title">Ukázky</h3>
+
+                    <div class="samples-grid">
+
+                        <a href="clanky.html" class="sample-card">
+                            <img src="images/projects/stories.jpg" alt="">
+                            <span class="sample-name">Příběhy, které zůstávají</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!--======================================================
+            SEKCE: AI ŘEŠENÍ
+        =======================================================-->
+
+        <section class="service" id="ai-reseni">
+
+            <div class="container">
+
+                <div class="service-header">
+
+                    <img src="images/icons/AI brain.png" alt="" class="service-header-icon">
+
+                    <div>
+                        <h2 class="service-title">AI řešení</h2>
+                        <p class="service-desc">
+                            Pomůžu vám najít místa, kde AI ušetří čas –
+                            a ukážu, jak ji používat tak, aby výsledek
+                            pořád vypadal jako od člověka.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="service-grid">
+
+                    <article class="service-panel">
+
+                        <h3>Co pro vás vytvořím</h3>
+
+                        <ul class="panel-list">
+                            <li>Prompty na míru vašemu zadání</li>
+                            <li>Postupy pro opakovanou tvorbu obsahu</li>
+                            <li>Výběr nástrojů podle toho, co potřebujete</li>
+                            <li>Zaškolení týmu i jednotlivce</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="service-panel">
+
+                        <h3>S čím pracuji</h3>
+
+                        <ul class="panel-tags">
+                            <li>Claude</li>
+                            <li>ChatGPT</li>
+                            <li>Midjourney</li>
+                            <li>Runway</li>
+                            <li>ElevenLabs</li>
+                            <li>Make</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="service-panel">
+
+                        <h3>Jak to probíhá</h3>
+
+                        <ol class="panel-steps">
+                            <li>Projdeme, co vás nejvíc zdržuje</li>
+                            <li>Navrhnu nástroje a postup</li>
+                            <li>Vyzkoušíme to na reálném zadání</li>
+                            <li>Předám návod, podle kterého to zvládnete sami</li>
+                        </ol>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!--======================================================
+            ZÁVĚREČNÁ VÝZVA
+        =======================================================-->
+
+        <section class="services-cta">
+
+            <div class="container">
+
+                <h2 class="section-title">Máte nápad?</h2>
+
+                <p class="services-lead">
+                    Napište mi, co chcete vytvořit.
+                    <br>
+                    Ozvu se obvykle do druhého dne.
+                </p>
+
+                <a href="contact.html" class="btn btn-primary">
+                    Napište mi
+                    <span class="btn-arrow">→</span>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
