@@ -170,7 +170,7 @@ body {
 
 .services-nav {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.4rem;
 
     margin: 3rem 0 0 auto;
@@ -577,25 +577,55 @@ body {
   7) RESPONZIVITA
 ========================================================*/
 
+/* MALÝ MONITOR / VELKÝ TABLET (1025–1400 px) */
+@media (max-width: 1400px) {
+
+    /* motýl pevně, calc tu už nedává smysl */
+    .services-bg-wrap {
+        left: -250px;
+        width: 800px;
+        height: 496px;
+    }
+
+}
+
 /* TABLET */
 @media (max-width: 1024px) {
 
-    .services-intro {
-        padding: 3.5rem 0 2.5rem;
+  /* MOTÝL – pevná poloha, calc z desktopu tu nedává smysl */
+    .services-bg-wrap {
+        top: -60px;
+        left: -150px;
+
+        width: 620px;
+        height: 384px;
+
+        opacity: .35;
     }
 
-    .services-intro .section-title {
-        font-size: 2rem;
+    /* text vpravo, ale s prostorem pro motýla vlevo */
+    .services-intro-text {
+        max-width: 100%;
+        padding-top: 2rem;
     }
 
-    .service {
-        padding: 3.5rem 0;
+    /* karty do dvou řad po dvou */
+    .services-nav {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+        max-width: 100%;
+        margin: 2.5rem 0 0 0;
     }
 
-    .service-desc,
-    .services-lead {
-        font-size: .98rem;
-        line-height: 1.8;
+    /* panely pod sebe – tři vedle sebe jsou tu moc úzké */
+    .service-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    /* ukázky po dvou */
+    .samples-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
 }
@@ -617,6 +647,7 @@ body {
         max-width: 100%;
         margin-left: 0;
         text-align: right;
+        padding-top: 4rem;   /* ← posune celý text níž */
     }
 
     .services-lead {
@@ -696,28 +727,24 @@ body {
       Velikost = width + height níže.
     ----------------------------------------------------*/
     .services-bg-wrap {
-        top: -85px;
-        left: 0;
-        transform: none;
+        top: -40px;
+        left: -60px;
 
-        width: 200px;
-        height: 320px;
+        width: 380px;
+        height: 235px;
 
-        opacity: .18;
+        opacity: .30;
 
-         /* měkký přechod na všechny strany */
-        mask-image: radial-gradient(
-            ellipse at center,
-            #000 35%,
-            transparent 75%
-        );
-        -webkit-mask-image: radial-gradient(
-            ellipse at center,
-            #000 35%,
-            transparent 75%
-        );
-        mask-composite: add;
-        -webkit-mask-composite: source-over;
+        /* měkký přechod doprava a dolů */
+        mask-image:
+            linear-gradient(to right, #000 40%, transparent 95%),
+            linear-gradient(to bottom, #000 50%, transparent 100%);
+        mask-composite: intersect;
+
+        -webkit-mask-image:
+            linear-gradient(to right, #000 40%, transparent 95%),
+            linear-gradient(to bottom, #000 50%, transparent 100%);
+        -webkit-mask-composite: source-in;
     }
    
 
